@@ -18,3 +18,8 @@ def upload_file():
 
     # Read the file content
     content = file.read().decode("utf-8")  # Assumes text content for simplicity
+    # Check if it's electronics-related
+    if max(result["scores"]) > 0.5:  # Confidence threshold
+        return jsonify({"message": "File recognized as electronics item", "category": result["labels"][0]})
+    else:
+        return jsonify({"message": "File is not an electronics item"}), 400
