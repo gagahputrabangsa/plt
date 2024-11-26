@@ -23,3 +23,6 @@ def upload_file():
         return jsonify({"message": "File recognized as electronics item", "category": result["labels"][0]})
     else:
         return jsonify({"message": "File is not an electronics item"}), 400
+
+if __name__ == "__main__":
+    app.run(debug=True)
