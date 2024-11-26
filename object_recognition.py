@@ -11,3 +11,10 @@ categories = ["smartphone", "electronics", "gadgets", "home appliances"]
 def upload_file():
     if "file" not in request.files:
         return jsonify({"error": "No file uploaded"}), 400
+    
+    file = request.files["file"]
+    if file.filename == "":
+        return jsonify({"error": "Empty file"}), 400
+
+    # Read the file content
+    content = file.read().decode("utf-8")  # Assumes text content for simplicity
